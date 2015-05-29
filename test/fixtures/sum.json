@@ -1,0 +1,9 @@
+{
+  "_id": "_design/sum",
+  "views": {
+    "by-week": {
+      "map": "Date.prototype.getWeek = function() {\n    var onejan = new Date(this.getFullYear(), 0, 1);\n    return Math.ceil((((this - onejan) / 86400000) + onejan.getDay() + 1) / 7);\n};\n\nfunction(doc) {\n  if (doc.date && doc.entry && doc.name){\n    date = new Date(doc.date);\n    var factor = \"1\" == doc.entry ? -1 : 1;\n    emit([doc.name, date.getFullYear(), date.getWeek()], date.getTime() * factor);\n  }\n}\n",
+      "reduce": "_sum"
+    }
+  }
+}
