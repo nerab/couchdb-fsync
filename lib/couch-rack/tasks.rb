@@ -42,7 +42,7 @@ namespace :couchdb do
     end
 
     task :database => :dotenv do
-      @db = CouchRest.database!(CouchRack.url)
+      @db = CouchRest.database!(ENV.fetch('COUCH_URL'))
     end
   end
 
