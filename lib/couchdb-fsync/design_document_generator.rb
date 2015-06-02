@@ -1,6 +1,6 @@
 require 'pathname'
 
-module CouchRack
+module CouchDB::FSync
   #
   # Builds CouchDB design documents
   #

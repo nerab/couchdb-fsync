@@ -1,4 +1,4 @@
-module CouchRack
+module CouchDB::FSync
   class DesignDocumentStore
     def initialize(base_dir)
       @base_dir = base_dir

@@ -1,9 +1,9 @@
 require 'helper'
-require 'couch-rack/design_document_generator'
+require 'couchdb-fsync/design_document_generator'
 
-class TestDesignDocumentGenerator < CouchRack::TestCase
+class TestDesignDocumentGenerator < CouchDB::FSync::TestCase
   def setup
-    @generator = CouchRack::DesignDocumentGenerator.new
+    @generator = CouchDB::FSync::DesignDocumentGenerator.new
   end
 
   def test_structure

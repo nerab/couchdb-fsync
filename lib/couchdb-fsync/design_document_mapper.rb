@@ -1,4 +1,4 @@
-module CouchRack
+module CouchDB::FSync
   #
   # Maps from a Hash to DesignDocument object
   #

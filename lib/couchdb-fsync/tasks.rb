@@ -1,14 +1,14 @@
 require 'dotenv/tasks'
-require 'couch-rack'
+require 'couchdb-fsync'
 require 'couchrest'
 require 'json'
 require 'pathname'
 
 namespace :couchdb do
-  namespace :views do
+  namespace :fsync do
     desc "Show views defined in the CouchDB instance"
     task :show => :database do
-      ddp = CouchRack::DesignDocumentPresenter.new
+      ddp = CouchDB::FSync::DesignDocumentPresenter.new
 
       each_design_document(@db) do |doc|
         ddp.present(doc)
@@ -17,7 +17,7 @@ namespace :couchdb do
 
     desc "Pull views from the CouchDB instance and store them in the local file system"
     task :pull => :database do
-      dds = CouchRack::DesignDocumentStore.new(Pathname('db/_design'))
+      dds = CouchDB::FSync::DesignDocumentStore.new(Pathname('db/_design'))
 
       each_design_document(@db) do |doc|
         dds.save(doc)
@@ -26,7 +26,7 @@ namespace :couchdb do
 
     desc "Push views from the local file system to the CouchDB instance"
     task :push => :database do
-      g = CouchRack::DesignDocumentGenerator.new
+      g = CouchDB::FSync::DesignDocumentGenerator.new
 
       Dir['db/_design/*'].each do |doc|
         view = JSON.load(g.generate(doc).to_json)
@@ -47,7 +47,7 @@ namespace :couchdb do
   end
 
   def each_design_document(db)
-    ddm = CouchRack::DesignDocumentMapper.new
+    ddm = CouchDB::FSync::DesignDocumentMapper.new
 
     db.all_docs(startkey: "_design/", endkey: "_design0", include_docs: true)['rows'].each do |row|
       yield ddm.map(row['doc'])

@@ -1,4 +1,4 @@
-module CouchRack
+module CouchDB::FSync
   class DesignDocumentPresenter
     def initialize(io = STDOUT)
       @io = io

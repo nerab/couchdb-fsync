@@ -1,6 +1,6 @@
 require 'json'
 
-module CouchRack
+module CouchDB::FSync
   DesignDocument = Struct.new(:name, :views) do
     def views
       self[:views] ||= Array.new

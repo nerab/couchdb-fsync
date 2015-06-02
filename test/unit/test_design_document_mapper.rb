@@ -1,8 +1,8 @@
 require 'helper'
 
-class TestDesignDocumentMapper < CouchRack::TestCase
+class TestDesignDocumentMapper < CouchDB::FSync::TestCase
   def setup
-    @mapper = CouchRack::DesignDocumentMapper.new
+    @mapper = CouchDB::FSync::DesignDocumentMapper.new
   end
 
   def test_structure

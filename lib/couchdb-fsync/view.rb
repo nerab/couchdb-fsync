@@ -1,6 +1,6 @@
 require 'json'
 
-module CouchRack
+module CouchDB::FSync
   View = Struct.new(:name, :map_function, :reduce_function) do
     def to_json(generator = nil)
       {

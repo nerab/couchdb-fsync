@@ -1,4 +1,4 @@
 source 'https://rubygems.org'
 
-# Specify your gem's dependencies in couch-rack.gemspec
+# Specify your gem's dependencies in couchdb-fsync.gemspec
 gemspec

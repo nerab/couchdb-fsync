@@ -1,11 +1,11 @@
 # coding: utf-8
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'couch-rack/version'
+require 'couchdb-fsync/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = "couch-rack"
-  spec.version       = CouchRack::VERSION
+  spec.name          = "couchdb-fsync"
+  spec.version       = CouchDB::FSync::VERSION
   spec.authors       = ["Nicholas E. Rabenau"]
   spec.email         = ["nerab@gmx.at"]
   spec.summary       = %q{CouchDB utilities for Rack-based servers}
